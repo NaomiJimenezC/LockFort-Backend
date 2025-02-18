@@ -36,12 +36,11 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'url' => env('MAIL_URL'),
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'host' => env('MAIL_HOST', 'smtp.gmail.com'), // <= Gmail Host
+            'port' => env('MAIL_PORT', 587),             // <= Gmail Port (TLS)
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'), // <= Gmail Encryption (TLS)
+            'username' => env('MAIL_USERNAME'),          // <= Your Gmail Username (from .env)
+            'password' => env('MAIL_PASSWORD'),          // <= Your Gmail Password/App Password (from .env)
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],
@@ -108,8 +107,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'your_email@example.com'), // <= Your "From" Email (from .env) - changed default example
+        'name' => env('MAIL_FROM_NAME', config('app.name', 'Example')), // <= Your "From" Name (from .env or app name) - using app name as default
     ],
 
     /*
