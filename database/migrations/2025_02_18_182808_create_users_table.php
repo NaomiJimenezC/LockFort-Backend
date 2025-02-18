@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->text('password_hash');
+            $table->boolean('is_account_confirmed')->default(false);
+            $table->timestamps(); // Adds 'created_at' and 'updated_at' which are TIMESTAMP by default in Laravel
         });
     }
 
